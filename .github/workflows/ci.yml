@@ -13,8 +13,6 @@ jobs:
   coding-standards:
     name: "Coding standards"
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
     steps:
     - uses: actions/checkout@v3
 
@@ -36,3 +34,13 @@ jobs:
       run: ./vendor/squizlabs/php_codesniffer/bin/phpcs -n --colors --report=full --standard=PSR12 --extensions=php ./src
     - name: PHPMD
       run: ./vendor/phpmd/phpmd/src/bin/phpmd ./src ansi ./ruleset.xml
+  tests:
+    name: "Tests"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Dump JWT Lexik keypair"
+        run: ./bin/console lexik:jwt:generate-keypair --no-interaction --overwrite
+      - name: "Run PHPUnit"
+        run: ./vendor/phpunit/phpunit/phpunit ./tests --bootstrap=./tests/bootstrap.php --testdox
+      
+      
