@@ -9,3 +9,12 @@ With out of box configured JWT authentication.
 4. execute migrations `php bin/console doctrine:migrations:migrate`
 5. (optional) execute fixtures `php bin/console doctrine:fixtures:load --purge-with-truncate`
 6. run php server ex. `php -S 127.0.0.1:8000 -t './public'`
+
+
+## Tests
+
+You can use `phpunit` from vendor to run tests.
+
+```
+./vendor/phpunit/phpunit/phpunit ./tests --bootstrap=./tests/bootstrap.php --testdox 
+```
