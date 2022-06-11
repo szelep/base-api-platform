@@ -32,7 +32,7 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
-    - name: PHPCS
-      uses: rtCamp/action-phpcs-code-review@v2.1.0
-    - name: phptan
-      uses: OskarStark/phpstan-ga@1.4.6
+    - name: PSR12
+      run: ./vendor/squizlabs/php_codesniffer/bin/phpcs -n --colors --report=full --standard=PSR12 --extensions=php ./src
+    - name: PHPMD
+      run: ./vendor/phpmd/phpmd/src/bin/phpmd ./src ansi ./ruleset.xml
