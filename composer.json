@@ -2,7 +2,7 @@
     "name": "szelep/base-api-platform",
     "description": "Base API Platform application with configured users system and auth handled by JWT.",
     "type": "project",
-    "license": "MIT",
+    "license": "WTFPL",
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
