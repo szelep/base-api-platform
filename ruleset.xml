@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<ruleset
+    name="PHPMD rule set"
+    xmlns="http://pmd.sf.net/ruleset/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+    xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+
+    <rule ref="rulesets/cleancode.xml">
+        <exclude name="StaticAccess" />
+    </rule>
+    <rule ref="rulesets/cleancode.xml/StaticAccess">
+        <properties>
+            <property name="exceptions">
+                <value>
+                    \DateTimeImmutable,
+                    \Symfony\Component\Uid\Uuid,
+                </value>
+            </property>
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/codesize.xml">
+        <exclude name="ExcessiveClassLength" />
+    </rule>
+    <rule ref="rulesets/codesize.xml/ExcessiveClassLength">
+        <properties>
+            <property name="ignore-whitespace">
+                <value>true</value>
+            </property>
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/controversial.xml" />
+
+    <rule ref="rulesets/design.xml">
+        <exclude name="NumberOfChildren" />
+        <exclude name="DepthOfInheritance" />
+    </rule>
+    <rule ref="rulesets/design.xml/NumberOfChildren">
+        <properties>
+            <property name="minimum">
+                <value>10</value>
+            </property>
+        </properties>
+    </rule>
+    <rule ref="rulesets/design.xml/DepthOfInheritance">
+        <properties>
+            <property name="minimum">
+                <value>3</value>
+            </property>
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/naming.xml">
+        <exclude name="LongVariable" />
+        <exclude name="ShortVariable" />
+        <exclude name="ShortClassName" />
+        <exclude name="ShortMethodName" />
+    </rule>
+    <rule ref="rulesets/naming.xml/LongVariable">
+        <properties>
+            <property name="maximum">
+                <value>35</value>
+            </property>
+        </properties>
+    </rule>
+    <rule ref="rulesets/naming.xml/ShortVariable">
+        <properties>
+            <property name="minimum">
+                <value>3</value>
+            </property>
+            <property name="exceptions">
+                <value>i,id,ip,key,now,day,dom,sql,em,to</value>
+            </property>
+        </properties>
+    </rule>
+    <rule ref="rulesets/naming.xml/ShortClassName">
+        <properties>
+            <property name="minimum">
+                <value>5</value>
+            </property>
+            <property name="exceptions">
+                <value>User,Role</value>
+            </property>
+        </properties>
+    </rule>
+    <rule ref="rulesets/naming.xml/ShortMethodName">
+        <properties>
+            <property name="minimum">
+                <value>5</value>
+            </property>
+            <property name="exceptions">
+                <value>add,now,save,load,send,skip,move,log</value>
+            </property>
+        </properties>
+    </rule>
+
+    <rule ref="../../../../../mi-schi/phpmd-extension/rulesets/cleancode.xml">
+        <exclude name="MemberPrimaryPrefix" />
+        <exclude name="DataStructureMethods"/>
+        <exclude name="DataStructureConstants"/>
+        <exclude name="ConstructorNewOperator"/>
+    </rule>
+    <rule ref="../../../../../mi-schi/phpmd-extension/rulesets/cleancode.xml/MemberPrimaryPrefix">
+        <properties>
+            <property name="maxChainCount">
+                <value>4</value>
+            </property>
+            <property name="allowedPrefixes">
+                <value>add,set</value>
+            </property>
+        </properties>
+    </rule>
+
+    <rule ref="../../../../../mi-schi/phpmd-extension/rulesets/naming.xml">
+        <exclude name="CommentDescription" />
+        <exclude name="ClassNameSuffix" />
+    </rule>
+    <rule ref="../../../../../mi-schi/phpmd-extension/rulesets/naming.xml/ClassNameSuffix">
+        <properties>
+            <property name="suffixes">
+                <value>Manager,Handler,Util,Utility,Information,Processor</value>
+            </property>
+        </properties>
+    </rule>
+
+    <rule ref="../../../../../mi-schi/phpmd-extension/rulesets/test.xml">
+        <exclude name="MethodName" />
+        <exclude name="NumberOfAsserts" />
+    </rule>
+    <rule ref="../../../../../mi-schi/phpmd-extension/rulesets/test.xml/MethodName">
+        <properties>
+            <property name="number">
+                <value>2</value>
+            </property>
+        </properties>
+    </rule>
+    <rule ref="../../../../../mi-schi/phpmd-extension/rulesets/test.xml/NumberOfAsserts">
+        <properties>
+            <property name="number">
+                <value>10</value>
+            </property>
+        </properties>
+    </rule>
+</ruleset>
