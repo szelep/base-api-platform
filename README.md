@@ -1,5 +1,7 @@
 # Base API-Platform application
 
+![workflow status](https://github.com/szelep/base-api-platform/actions/workflows/ci.yml/badge.svg)
+
 With out of box configured JWT authentication.
 
 ## Setup (local instance)
