@@ -35,6 +35,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
     - name: PSR12
       run: ./vendor/squizlabs/php_codesniffer/bin/phpcs -n --colors --report=full --standard=PSR12 --extensions=php ./src
     - name: PHPMD
@@ -44,6 +46,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
       - name: "Dump JWT Lexik keypair"
         run: ./bin/console lexik:jwt:generate-keypair --no-interaction --overwrite
       - name: "Run PHPUnit"
