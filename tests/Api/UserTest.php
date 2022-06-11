@@ -125,4 +125,27 @@ username: This value should not be null.'
             'username' => 'user',
         ]);
     }
+
+    /**
+     * @testdox login to newly created account should not throw an exception
+     *
+     * @return void
+     */
+    public function testAuthToNewAccount(): void
+    {
+
+        $this->request(
+            'api/public/users',
+            Request::METHOD_POST,
+            [
+                'username' => 'user_to_auth',
+                'plainPassword' => 'password',
+                'repeatedPlainPassword' => 'password',
+            ],
+        );
+
+        $this->auth('user_to_auth', 'password');
+
+        $this->addToAssertionCount(1);
+    }
 }

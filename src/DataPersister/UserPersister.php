@@ -36,7 +36,7 @@ class UserPersister implements DataPersisterInterface, ResumableDataPersisterInt
      *
      * Provides password hashing for user with plainPassword set.
      */
-    public function persist($data): void
+    public function persist($data): User
     {
         assert($data instanceof User);
 
@@ -50,6 +50,8 @@ class UserPersister implements DataPersisterInterface, ResumableDataPersisterInt
 
             $data->setPassword($hashedPassword);
         }
+
+        return $data;
     }
 
     /**

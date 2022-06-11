@@ -204,9 +204,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
 
     /**
+     * Gets roles.
+     *
      * @return array
      */
-    #[Groups([self::READ_GROUP])]
     public function getRoles(): array
     {
         return array_unique([
