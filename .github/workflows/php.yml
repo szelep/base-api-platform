@@ -1,4 +1,4 @@
-name: PHP Composer
+name: CI
 
 on:
   push:
@@ -10,10 +10,11 @@ permissions:
   contents: read
 
 jobs:
-  build:
-
+  coding-standards:
+    name: "Coding standards"
     runs-on: ubuntu-latest
-
+    strategy:
+      fail-fast: false
     steps:
     - uses: actions/checkout@v3
 
@@ -31,7 +32,7 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
-    - name: Dump lexik JWT keys
-      run: ./bin/console lexik:jwt:generate-keypair --no-interaction --overwrite
-    - name: Run tests
-      run: ./vendor/phpunit/phpunit/phpunit ./tests --bootstrap=./tests/bootstrap.php --testdox
+    - name: PHPCS
+      uses: rtCamp/action-phpcs-code-review@v2.1.0
+    - name: phptan
+      uses: OskarStark/phpstan-ga@1.4.6
