@@ -31,5 +31,7 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
+    - name: Dump lexik JWT keys
+      run: ./bin/console lexik:jwt:generate-keypair --no-interaction --overwrite
     - name: Run tests
       run: ./vendor/phpunit/phpunit/phpunit ./tests --bootstrap=./tests/bootstrap.php --testdox
